@@ -14,6 +14,7 @@ namespace CollectionOfElephants.ViewModel
     class MainViewModel : INotifyPropertyChanged
     {
         private ObservableCollection<Elephant> _elephants;
+        private Elephant _selectedElephant;
 
         public MainViewModel()
         {
@@ -22,14 +23,27 @@ namespace CollectionOfElephants.ViewModel
             Elephant e1 = new Elephant();
             e1.EarSize = "Big";
             e1.Name = "Monty";
+            e1.imageURL = @"/Assets/whiteElephant.jpg";
 
             Elephant e2 = new Elephant();
             e2.EarSize = "Small";
             e2.Name = "Python";
+            e2.imageURL = @"/Assets/elephants-9a.jpg";
 
             _elephants.Add(e1);
             _elephants.Add(e2);
 
+           // SelectedElephant = _elephants[0];
+        }
+
+        public Elephant SelectedElephant
+        {
+            get { return _selectedElephant; }
+            set
+            {
+                _selectedElephant = value;
+                OnPropertyChanged("SelectedElephant");
+            }
         }
 
         public ObservableCollection<Elephant> Elephants
@@ -37,6 +51,8 @@ namespace CollectionOfElephants.ViewModel
             get { return _elephants; }
             set { _elephants = value; }
         }
+
+        
 
         public event PropertyChangedEventHandler PropertyChanged;
 

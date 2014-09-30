@@ -10,6 +10,7 @@ namespace CollectionOfElephants.Model
     {
         private string _earSize;
         private string _name;
+        private string _imageUrl;
 
         public string EarSize
         {
@@ -26,6 +27,12 @@ namespace CollectionOfElephants.Model
         public override string ToString()
         {
             return Name.ToString();
+        }
+
+        public String imageURL
+        {
+            get { return _imageUrl; }
+            set { _imageUrl = value; }
         }
     }
 }
