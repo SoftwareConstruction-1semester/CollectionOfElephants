@@ -13,11 +13,11 @@
             <ViewModel:MainViewModel/>
         </Grid.DataContext>
         
-        <ListView HorizontalAlignment="Left" ItemsSource="{Binding Elephants, Mode=TwoWay}" SelectedItem="{Binding SelectedElephant, Mode=TwoWay}" Height="100" Margin="182,494,0,0" VerticalAlignment="Top" Width="100"/>
+        <ListView HorizontalAlignment="Left" ItemsSource="{Binding Elephants, Mode=TwoWay}" SelectedItem="{Binding SelectedElephantModel, Mode=TwoWay}" Height="100" Margin="182,494,0,0" VerticalAlignment="Top" Width="100"/>
         
-        <Image HorizontalAlignment="Left" Height="421" Margin="513,281,0,0" VerticalAlignment="Top" Width="628" Source="{Binding SelectedElephant.imageURL, Mode=TwoWay}"/>
+        <Image HorizontalAlignment="Left" Height="421" Margin="513,281,0,0" VerticalAlignment="Top" Width="628" Source="{Binding SelectedElephantModel.imageURL, Mode=TwoWay}"/>
         
-        <TextBlock HorizontalAlignment="Left" Margin="554,247,0,0" TextWrapping="Wrap" Text="{Binding SelectedElephant.Name, Mode=TwoWay}" VerticalAlignment="Top" Style="{StaticResource SubheaderTextBlockStyle}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="554,247,0,0" TextWrapping="Wrap" Text="{Binding SelectedElephantModel.Name, Mode=TwoWay}" VerticalAlignment="Top" Style="{StaticResource SubheaderTextBlockStyle}"/>
 
 
 

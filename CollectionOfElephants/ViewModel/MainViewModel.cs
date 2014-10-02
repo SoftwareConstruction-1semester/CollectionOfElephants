@@ -13,19 +13,19 @@ namespace CollectionOfElephants.ViewModel
 {
     class MainViewModel : INotifyPropertyChanged
     {
-        private ObservableCollection<Elephant> _elephants;
-        private Elephant _selectedElephant;
+        private ObservableCollection<ElephantModel> _elephants;
+        private ElephantModel _selectedElephantModel;
 
         public MainViewModel()
         {
-            _elephants = new ObservableCollection<Elephant>();
+            _elephants = new ObservableCollection<ElephantModel>();
             
-            Elephant e1 = new Elephant();
+            ElephantModel e1 = new ElephantModel();
             e1.EarSize = "Big";
             e1.Name = "Monty";
             e1.imageURL = @"/Assets/whiteElephant.jpg";
 
-            Elephant e2 = new Elephant();
+            ElephantModel e2 = new ElephantModel();
             e2.EarSize = "Small";
             e2.Name = "Python";
             e2.imageURL = @"/Assets/elephants-9a.jpg";
@@ -33,26 +33,27 @@ namespace CollectionOfElephants.ViewModel
             _elephants.Add(e1);
             _elephants.Add(e2);
 
-           // SelectedElephant = _elephants[0];
+           // SelectedElephantModel = _elephants[0];
         }
 
-        public Elephant SelectedElephant
+        public ElephantModel SelectedElephantModel
         {
-            get { return _selectedElephant; }
+            get { return _selectedElephantModel; }
             set
             {
-                _selectedElephant = value;
-                OnPropertyChanged("SelectedElephant");
+                _selectedElephantModel = value;
+
+                // this line tells the UI (and the rest of the system) that a property changed
+                OnPropertyChanged("SelectedElephantModel");
             }
         }
 
-        public ObservableCollection<Elephant> Elephants
+        public ObservableCollection<ElephantModel> Elephants
         {
             get { return _elephants; }
             set { _elephants = value; }
         }
 
-        
 
         public event PropertyChangedEventHandler PropertyChanged;
 
