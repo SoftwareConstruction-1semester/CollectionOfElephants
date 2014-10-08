@@ -15,6 +15,7 @@ namespace CollectionOfElephants.ViewModel
     {
         private ObservableCollection<ElephantModel> _elephants;
         private ElephantModel _selectedElephantModel;
+        private ElephantModel _newElephaneModel;
 
         public MainViewModel()
         {
@@ -23,17 +24,27 @@ namespace CollectionOfElephants.ViewModel
             ElephantModel e1 = new ElephantModel();
             e1.EarSize = "Big";
             e1.Name = "Monty";
-            e1.imageURL = @"/Assets/whiteElephant.jpg";
+            e1.imageURL = "/Assets/whiteElephant.jpg";
 
             ElephantModel e2 = new ElephantModel();
             e2.EarSize = "Small";
             e2.Name = "Python";
-            e2.imageURL = @"/Assets/elephants-9a.jpg";
+            e2.imageURL = "/Assets/elephants-9a.jpg";
+
+            // short way of doing the sam as above
+            ElephantModel e3 = new ElephantModel(){EarSize = "small", Name = "Ebbe", NumberOfChildren = 2, Weight = 78, imageURL = ""};
 
             _elephants.Add(e1);
             _elephants.Add(e2);
+            _elephants.Add(e3);
 
            // SelectedElephantModel = _elephants[0];
+        }
+
+        public ElephantModel NewElephaneModel
+        {
+            get { return _newElephaneModel; }
+            set { _newElephaneModel = value; }
         }
 
         public ElephantModel SelectedElephantModel
