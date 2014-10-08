@@ -19,6 +19,13 @@
 
         <TextBlock HorizontalAlignment="Left" Margin="554,247,0,0" TextWrapping="Wrap" Text="{Binding SelectedElephantModel.Name, Mode=TwoWay}" VerticalAlignment="Top" Style="{StaticResource SubheaderTextBlockStyle}"/>
         <TextBlock HorizontalAlignment="Left" Margin="909,247,0,0" TextWrapping="Wrap" Text="{Binding SelectedElephantModel.Weight}" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Right" Margin="0,256,120,0" TextWrapping="Wrap" Text="New elephant name:" VerticalAlignment="Top" RenderTransformOrigin="0.756,0.615" Style="{StaticResource SubtitleTextBlockStyle}"/>
+        <TextBox HorizontalAlignment="Left" Margin="1264,245,0,0" TextWrapping="Wrap" Text="{Binding NewElephaneModel.Name, Mode=TwoWay}" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="1264,319,0,0" TextWrapping="Wrap" Text="{Binding NewElephaneModel.EarSize, Mode=TwoWay}" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="1264,282,0,0" TextWrapping="Wrap" Text="{Binding NewElephaneModel.Weight, Mode=TwoWay}" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Right" Margin="0,331,120,0" TextWrapping="Wrap" Text="Earsize" VerticalAlignment="Top" RenderTransformOrigin="0.756,0.615" Style="{StaticResource SubtitleTextBlockStyle}"/>
+        <TextBlock HorizontalAlignment="Right" Margin="0,294,120,0" TextWrapping="Wrap" Text="Weight" VerticalAlignment="Top" RenderTransformOrigin="0.756,0.615" Style="{StaticResource SubtitleTextBlockStyle}"/>
+        <Button Content="Add new elephant" HorizontalAlignment="Left" Margin="1160,365,0,0" VerticalAlignment="Top" Width="171" Command="{Binding AddNewElephant}"/>
 
 
 
