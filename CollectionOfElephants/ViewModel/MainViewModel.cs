@@ -18,6 +18,7 @@ namespace CollectionOfElephants.ViewModel
         private ElephantModel _selectedElephantModel;
         private ElephantModel _newElephaneModel;
         private ICommand _addNewElephant;
+        private ICommand _removeSelectedElephant;
 
         public MainViewModel()
         {
@@ -43,13 +44,25 @@ namespace CollectionOfElephants.ViewModel
             _newElephaneModel = new ElephantModel();
             _addNewElephant = new RelayCommand(AddElephant);
 
-
+            _removeSelectedElephant = new RelayCommand(RemoveElephant);
         }
+
+        private void RemoveElephant()
+        {
+            _elephants.Remove(_selectedElephantModel);
+        }
+
         //executed by the a relaycommand (addNewElephant)
         private void AddElephant()
         {
             _elephants.Add(_newElephaneModel);
             OnPropertyChanged("Elephants");
+        }
+
+        public ICommand RemoveSelectedElephant
+        {
+            get { return _removeSelectedElephant; }
+            set { _removeSelectedElephant = value; }
         }
 
         public ICommand AddNewElephant

@@ -26,6 +26,7 @@
         <TextBlock HorizontalAlignment="Right" Margin="0,331,120,0" TextWrapping="Wrap" Text="Earsize" VerticalAlignment="Top" RenderTransformOrigin="0.756,0.615" Style="{StaticResource SubtitleTextBlockStyle}"/>
         <TextBlock HorizontalAlignment="Right" Margin="0,294,120,0" TextWrapping="Wrap" Text="Weight" VerticalAlignment="Top" RenderTransformOrigin="0.756,0.615" Style="{StaticResource SubtitleTextBlockStyle}"/>
         <Button Content="Add new elephant" HorizontalAlignment="Left" Margin="1160,365,0,0" VerticalAlignment="Top" Width="171" Command="{Binding AddNewElephant}"/>
+        <Button Content="Remove elephant!" HorizontalAlignment="Left" Margin="191,613,0,0" VerticalAlignment="Top" Command="{Binding RemoveSelectedElephant}"/>
 
 
 
