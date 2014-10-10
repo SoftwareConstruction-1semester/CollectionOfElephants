@@ -21,15 +21,17 @@ namespace CollectionOfElephants.ViewModel
         private ICommand _removeSelectedElephant;
         private ObservableCollection<ZooModel> _zooModels;
         private ZooModel _selectedZoo;
+        private ICommand _editElephantName;
 
         public MainViewModel()
         {
-            //_elephants = new ObservableCollection<ElephantModel>();
+            #region create ZooModels
             _zooModels = new ObservableCollection<ZooModel>();
-            ZooModel z1 = new ZooModel(){ImageUrl = "/Assets/cphElephant.jpg", City = "Copenhagen", Name = "Copenhagen Zoo", Elephants = new ObservableCollection<ElephantModel>()};
-            ZooModel z2 = new ZooModel() {ImageUrl = "/Assets/odenseElphant.jpg",City = "Odense", Name = "Odense Zoo", Elephants = new ObservableCollection<ElephantModel>() };
+            ZooModel z1 = new ZooModel(){ImageUrl = "/Assets/cphElephant.jpg", City = "Copenhagen", Name = "Copenhagen Zoo", Elephants = new List<ElephantModel>()};
+            ZooModel z2 = new ZooModel() {ImageUrl = "/Assets/odenseElphant.jpg",City = "Odense", Name = "Odense Zoo", Elephants = new List<ElephantModel>() };
             _zooModels.Add(z1);
             _zooModels.Add(z2);
+            #endregion
             #region create elephants
             ElephantModel e1 = new ElephantModel();
             e1.EarSize = "Big";
@@ -54,8 +56,22 @@ namespace CollectionOfElephants.ViewModel
 
             _newElephaneModel = new ElephantModel();
             _addNewElephant = new RelayCommand(AddElephant);
-
             _removeSelectedElephant = new RelayCommand(RemoveElephant);
+            _editElephantName = new RelayCommand(EditElephantNameCommand);
+        }
+
+        private void EditElephantNameCommand()
+        {
+            SelectedElephantModel.Name = "New Name";
+            OnPropertyChanged("SelectedElephantModel");
+            OnPropertyChanged("SelectedZoo");
+        }
+
+        public ICommand EditElephantName
+
+        {
+            get { return _editElephantName; }
+            set { _editElephantName = value; }
         }
 
         public ZooModel SelectedZoo
