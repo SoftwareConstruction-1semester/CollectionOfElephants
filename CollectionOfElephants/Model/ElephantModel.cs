@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using CollectionOfElephants.Annotations;
 
 namespace CollectionOfElephants.Model
 {
-    class ElephantModel
+    class ElephantModel :INotifyPropertyChanged
     {
         private string _earSize;
         private string _name;
@@ -29,7 +32,11 @@ namespace CollectionOfElephants.Model
         public string Name
         {
             get { return _name; }
-            set { _name = value; }
+            set
+            {
+                _name = value; 
+                OnPropertyChanged("");
+            }
         }
 
         public int NumberOfChildren
@@ -53,6 +60,15 @@ namespace CollectionOfElephants.Model
         {
             get { return _imageUrl; }
             set { _imageUrl = value; }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

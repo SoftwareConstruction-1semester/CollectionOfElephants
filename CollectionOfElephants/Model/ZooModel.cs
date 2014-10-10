@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +9,7 @@ using CollectionOfElephants.Model;
 
 namespace CollectionOfElephants.ViewModel
 {
-    class ZooModel
+    class ZooModel :INotifyCollectionChanged
     {
         private String _imageUrl;
         private List<ElephantModel> _elephants;
@@ -31,5 +32,7 @@ namespace CollectionOfElephants.ViewModel
             get { return _imageUrl; }
             set { _imageUrl = value; }
         }
+
+        public event NotifyCollectionChangedEventHandler CollectionChanged;
     }
 }

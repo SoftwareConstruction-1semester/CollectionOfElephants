@@ -26,7 +26,13 @@
 
         <TextBlock HorizontalAlignment="Left" Margin="112,338,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{StaticResource SubheaderTextBlockStyle}" Text="Elephants in"/>
 
-        <ListView HorizontalAlignment="Left" Height="100" Margin="112,386,0,0" VerticalAlignment="Top" Width="100" ItemsSource="{Binding SelectedZoo.Elephants}" SelectedItem="{Binding SelectedElephantModel, Mode=TwoWay}"/>
+        <ListView HorizontalAlignment="Left" Height="100" Margin="112,386,0,0" VerticalAlignment="Top" Width="207" ItemsSource="{Binding SelectedZoo.Elephants}" SelectedItem="{Binding SelectedElephantModel, Mode=TwoWay}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
         <Image HorizontalAlignment="Left" Height="394" Margin="614,126,0,0" VerticalAlignment="Top" Width="628" Source="{Binding SelectedElephantModel.imageURL}"/>
         <TextBlock HorizontalAlignment="Left" Style="{StaticResource SubheaderTextBlockStyle}" Margin="254,338,0,0" TextWrapping="Wrap" Text="{Binding SelectedZoo.Name, Mode=TwoWay}" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="688,570,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Style="{StaticResource BodyTextBlockStyle}" Height="31"/>
