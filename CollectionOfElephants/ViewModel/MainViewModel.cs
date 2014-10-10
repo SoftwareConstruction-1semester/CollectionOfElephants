@@ -19,11 +19,18 @@ namespace CollectionOfElephants.ViewModel
         private ElephantModel _newElephaneModel;
         private ICommand _addNewElephant;
         private ICommand _removeSelectedElephant;
+        private ObservableCollection<ZooModel> _zooModels;
+        private ZooModel _selectedZoo;
 
         public MainViewModel()
         {
-            _elephants = new ObservableCollection<ElephantModel>();
-   
+            //_elephants = new ObservableCollection<ElephantModel>();
+            _zooModels = new ObservableCollection<ZooModel>();
+            ZooModel z1 = new ZooModel(){ImageUrl = "/Assets/cphElephant.jpg", City = "Copenhagen", Name = "Copenhagen Zoo", Elephants = new ObservableCollection<ElephantModel>()};
+            ZooModel z2 = new ZooModel() {ImageUrl = "/Assets/odenseElphant.jpg",City = "Odense", Name = "Odense Zoo", Elephants = new ObservableCollection<ElephantModel>() };
+            _zooModels.Add(z1);
+            _zooModels.Add(z2);
+            #region create elephants
             ElephantModel e1 = new ElephantModel();
             e1.EarSize = "Big";
             e1.Name = "Monty";
@@ -37,14 +44,34 @@ namespace CollectionOfElephants.ViewModel
             // short way of doing the same as above
             ElephantModel e3 = new ElephantModel(){EarSize = "small", Name = "Ebbe", NumberOfChildren = 2, Weight = 78, imageURL = ""};
 
-            _elephants.Add(e1);
-            _elephants.Add(e2);
-            _elephants.Add(e3);
+            z1.Elephants.Add(e1);
+            z1.Elephants.Add(e2);
+
+            z2.Elephants.Add(e3);
+
+            SelectedZoo = z1;
+            #endregion
 
             _newElephaneModel = new ElephantModel();
             _addNewElephant = new RelayCommand(AddElephant);
 
             _removeSelectedElephant = new RelayCommand(RemoveElephant);
+        }
+
+        public ZooModel SelectedZoo
+        {
+            get { return _selectedZoo; }
+            set
+            {
+                _selectedZoo = value;
+                OnPropertyChanged("SelectedZoo");
+            }
+        }
+
+        public ObservableCollection<ZooModel> ZooModels
+        {
+            get { return _zooModels; }
+            set { _zooModels = value; }
         }
 
         private void RemoveElephant()
