@@ -2,11 +2,16 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Xml.Linq;
+using Windows.Devices.Input;
+using Windows.Storage;
+using Windows.UI.Xaml;
 using CollectionOfElephants.Annotations;
 using CollectionOfElephants.Model;
 
@@ -26,11 +31,15 @@ namespace CollectionOfElephants.ViewModel
         public MainViewModel()
         {
             #region create ZooModels
-            _zooModels = new ObservableCollection<ZooModel>();
-            ZooModel z1 = new ZooModel(){ImageUrl = "/Assets/cphElephant.jpg", City = "Copenhagen", Name = "Copenhagen Zoo", Elephants = new List<ElephantModel>()};
-            ZooModel z2 = new ZooModel() {ImageUrl = "/Assets/odenseElphant.jpg",City = "Odense", Name = "Odense Zoo", Elephants = new List<ElephantModel>() };
-            _zooModels.Add(z1);
-            _zooModels.Add(z2);
+            //_zooModels = new ObservableCollection<ZooModel>();
+            //ZooModel z1 = new ZooModel(){ImageUrl = "/Assets/cphElephant.jpg", City = "Copenhagen", Name = "Copenhagen Zoo", Elephants = new List<ElephantModel>()};
+            //ZooModel z2 = new ZooModel() {ImageUrl = "/Assets/odenseElphant.jpg",City = "Odense", Name = "Odense Zoo", Elephants = new List<ElephantModel>() };
+            //_zooModels.Add(z1);
+            //_zooModels.Add(z2);
+
+            //Load XML;
+            LoadZooModels();
+
             #endregion
             #region create elephants
             ElephantModel e1 = new ElephantModel();
@@ -46,18 +55,44 @@ namespace CollectionOfElephants.ViewModel
             // short way of doing the same as above
             ElephantModel e3 = new ElephantModel(){EarSize = "small", Name = "Ebbe", NumberOfChildren = 2, Weight = 78, imageURL = ""};
 
-            z1.Elephants.Add(e1);
-            z1.Elephants.Add(e2);
+            ZooModels[0].Elephants.Add(e1);
+            ZooModels[0].Elephants.Add(e2);
 
-            z2.Elephants.Add(e3);
+            ZooModels[1].Elephants.Add(e3);
 
-            SelectedZoo = z1;
+            SelectedZoo = ZooModels[0];
             #endregion
 
             _newElephaneModel = new ElephantModel();
             _addNewElephant = new RelayCommand(AddElephant);
             _removeSelectedElephant = new RelayCommand(RemoveElephant);
             _editElephantName = new RelayCommand(EditElephantNameCommand);
+        }
+
+        /// <summary>
+        /// Loads ZooModels
+        /// </summary>
+        private async void LoadZooModels()
+        {
+            StorageFolder installationFolder = Windows.ApplicationModel.Package.Current.InstalledLocation;
+            string xmlfile = @"Assets\xml\ZooModels.xml";
+            StorageFile file = await installationFolder.GetFileAsync(xmlfile);
+
+            Stream zooStream = await file.OpenStreamForReadAsync();
+            XDocument zooModelDocument = XDocument.Load(zooStream);
+
+            IEnumerable<XElement> zooModelsList = zooModelDocument.Descendants("zoomodel");
+
+            ZooModels = new ObservableCollection<ZooModel>();
+
+            foreach (XElement xElement in zooModelsList)
+            {
+                ZooModels.Add(new ZooModel(){
+                    Name = xElement.Element("name").Value,
+                    ImageUrl = xElement.Element("imageurl").Value,
+                    Elephants = new List<ElephantModel>()
+                });
+            }
         }
 
         private void EditElephantNameCommand()

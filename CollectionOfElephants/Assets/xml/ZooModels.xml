@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<zoomodels>
+  <zoomodel>
+    <name>Copenhagen Zoo</name> 
+    <Address>Roskildevej 3</Address>
+    <zipcode>2000</zipcode>
+    <city>Frederiksberg</city>
+    <phone>72 200 200</phone>
+    <email>zoo@zoo.dk</email>
+    <imageurl>/Assets/cphElephant.jpg</imageurl>
+  </zoomodel>
+  <zoomodel>
+    <name>Odense Zoo</name>
+    <Address>Sdr. Boulevard 306</Address>
+    <zipcode>5000</zipcode>
+    <city>Odense C</city>
+    <phone>6611 1360</phone>
+    <email>odensezoo@odensezoo.dk</email>
+    <imageurl>/Assets/odenseElphant.jpg</imageurl>
+  </zoomodel>
+</zoomodels>
