@@ -1,5 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
   <elephantmodels>
-
+    <elephantmodel>
+      <name>Python</name>
+      <earsize>Small</earsize>
+      <imageurl>/Assets/elephants-9a.jpg</imageurl>
+      <children>3</children>
+      <weight>1000</weight>
+      <zoo>Copenhagen Zoo</zoo>
+    </elephantmodel>
+    <elephantmodel>
+      <name>Monty</name>
+      <earsize>Big</earsize>
+      <imageurl>/Assets/whiteElephant.jpg</imageurl>
+      <children>1</children>
+      <weight>1000</weight>
+      <zoo>Copenhagen Zoo</zoo>
+    </elephantmodel>
+    <elephantmodel>
+      <name>Ebbe</name>
+      <earsize>Small</earsize>
+      <imageurl></imageurl>
+      <children>2</children>
+      <weight>78</weight>
+      <zoo>Odense Zoo</zoo>
+    </elephantmodel>
   </elephantmodels>
 

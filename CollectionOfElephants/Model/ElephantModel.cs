@@ -16,6 +16,7 @@ namespace CollectionOfElephants.Model
         private string _imageUrl;
         private int _numberOfChildren;
         private int _weight;
+        private string _zoo;
 
         public string EarSize
         {
@@ -60,6 +61,12 @@ namespace CollectionOfElephants.Model
         {
             get { return _imageUrl; }
             set { _imageUrl = value; }
+        }
+
+        public String Zoo
+        {
+            get { return _zoo; }
+            set { _zoo = value; }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
