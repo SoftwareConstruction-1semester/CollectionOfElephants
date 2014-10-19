@@ -41,7 +41,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="771,621,0,0" TextWrapping="Wrap" Text="{Binding SelectedElephantModel.Weight, Mode=TwoWay}" VerticalAlignment="Top" Style="{StaticResource BodyTextBlockStyle}" Height="31"/>
         <TextBlock HorizontalAlignment="Left" Margin="688,674,0,0" TextWrapping="Wrap" Text="Earsize" VerticalAlignment="Top" Style="{StaticResource BodyTextBlockStyle}" Height="31"/>
         <TextBlock HorizontalAlignment="Left" Margin="771,674,0,0" TextWrapping="Wrap" Text="{Binding SelectedElephantModel.EarSize, Mode=TwoWay}" VerticalAlignment="Top" Style="{StaticResource BodyTextBlockStyle}" Height="31"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="1018,566,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.465,0.003" Command="{Binding EditElephantName}"/>
+        <Button Content="Add New Elephant" HorizontalAlignment="Left" Margin="1118,706,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.465,0.003" Click="Button_Click"/>
 
 
 

@@ -63,20 +63,35 @@ namespace CollectionOfElephants.ViewModel
             //Load XML
             LoadElephantModels();
 
-            SelectedZoo = ZooModels[0];
+            //SelectedZoo = ZooModels[0];
             #endregion
 
             _newElephaneModel = new ElephantModel();
             _addNewElephant = new RelayCommand(AddElephant);
             _removeSelectedElephant = new RelayCommand(RemoveElephant);
-            _editElephantName = new RelayCommand(EditElephantNameCommand);
+            //_editElephantName = new RelayCommand(EditElephantNameCommand);
         }
 
         private async void LoadElephantModels()
         {
-            StorageFolder installationFolder = Windows.ApplicationModel.Package.Current.InstalledLocation;
-            string xmlfile = @"Assets\xml\Elephants.xml";
-            StorageFile file = await installationFolder.GetFileAsync(xmlfile);
+            //try to load elephants xml from local storage
+            StorageFile file = null;
+            try
+            {
+                file = await Windows.Storage.ApplicationData.Current.LocalFolder.GetFileAsync("elephants.xml");
+            }
+            catch (Exception)
+            {
+            }
+
+            // if it fails use assets  folder
+            if (file == null)
+            {
+                StorageFolder installationFolder = Windows.ApplicationModel.Package.Current.InstalledLocation;
+                string xmlfile = @"Assets\xml\Elephants.xml";
+                file = await installationFolder.GetFileAsync(xmlfile);
+            }
+
 
             Stream elephantStream = await file.OpenStreamForReadAsync();
             XDocument elephantDocument = XDocument.Load(elephantStream);
@@ -93,7 +108,7 @@ namespace CollectionOfElephants.ViewModel
                 e.imageURL = xElement.Element("imageurl").Value;
                 e.NumberOfChildren = Convert.ToInt32(xElement.Element("children").Value);
                 e.EarSize = xElement.Element("earsize").Value;
-
+                
                 //find the correct zoo and add the elephant to it!
                 foreach (ZooModel zooModel in ZooModels)
                 {
@@ -104,6 +119,7 @@ namespace CollectionOfElephants.ViewModel
                 }
 
             }
+            OnPropertyChanged("Elephants");
         }
 
         /// <summary>
@@ -131,15 +147,16 @@ namespace CollectionOfElephants.ViewModel
                 });
             }
 
+            OnPropertyChanged("ZooModels");
 
         }
 
-        private void EditElephantNameCommand()
-        {
-            SelectedElephantModel.Name = "New Name";
-            OnPropertyChanged("SelectedElephantModel");
-            OnPropertyChanged("SelectedZoo");
-        }
+        //private void EditElephantNameCommand()
+        //{
+        //    SelectedElephantModel.Name = "New Name";
+        //    OnPropertyChanged("SelectedElephantModel");
+        //    OnPropertyChanged("SelectedZoo");
+        //}
 
         public ICommand EditElephantName
 
