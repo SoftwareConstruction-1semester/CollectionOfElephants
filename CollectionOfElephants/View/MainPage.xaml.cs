@@ -32,5 +32,16 @@ namespace CollectionOfElephants
         {
             this.Frame.Navigate(typeof(AddElephantView));
         }
+
+        private void AppBarButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(AddElephantView));
+        }
+
+        private void AppBarButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(SearchElephant));
+
+        }
     }
 }

@@ -46,4 +46,14 @@
 
 
     </Grid>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Icon="Add" Click="AppBarButton_Click" />
+            <AppBarSeparator />
+            <AppBarButton Icon="Edit" />
+            <AppBarButton Icon="Remove" />
+            <AppBarSeparator />
+            <AppBarButton Icon="filter" Click="AppBarButton_Click_1" />
+        </CommandBar>
+    </Page.BottomAppBar>
 </Page>
