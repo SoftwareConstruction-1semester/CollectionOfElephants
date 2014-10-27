@@ -115,6 +115,7 @@
     <Compile Include="Model\ElephantModel.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModel\AddElephantViewModel.cs" />
+    <Compile Include="ViewModel\FilterViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="Model\ZooModel.cs" />

@@ -42,13 +42,10 @@
         <TextBlock HorizontalAlignment="Left" Margin="688,674,0,0" TextWrapping="Wrap" Text="Earsize" VerticalAlignment="Top" Style="{StaticResource BodyTextBlockStyle}" Height="31"/>
         <TextBlock HorizontalAlignment="Left" Margin="771,674,0,0" TextWrapping="Wrap" Text="{Binding SelectedElephantModel.EarSize, Mode=TwoWay}" VerticalAlignment="Top" Style="{StaticResource BodyTextBlockStyle}" Height="31"/>
         <Button Content="Add New Elephant" HorizontalAlignment="Left" Margin="1118,706,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.465,0.003" Click="Button_Click"/>
-
-
-
     </Grid>
     <Page.BottomAppBar>
         <CommandBar>
-            <AppBarButton Icon="Add" Click="AppBarButton_Click" />
+            <AppBarButton Click="AppBarButton_Click" Icon="Add" />
             <AppBarSeparator />
             <AppBarButton Icon="Edit" />
             <AppBarButton Icon="Remove" />
