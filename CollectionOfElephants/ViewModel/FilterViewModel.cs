@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Xml.Linq;
 using Windows.Storage;
+using Windows.UI.Popups;
 using CollectionOfElephants.Annotations;
 using CollectionOfElephants.Model;
 
@@ -28,7 +29,10 @@ namespace CollectionOfElephants.ViewModel
         public ICommand filterCommand { get; set; }
 
         public FilterViewModel()
+
         {
+            InputTextBox = "";
+
             AllElephants = new ObservableCollection<ElephantModel>();
             FilteredElephants = new ObservableCollection<ElephantModel>();
 
@@ -43,11 +47,33 @@ namespace CollectionOfElephants.ViewModel
 
         private void FilterElephants()
         {
+            new MessageDialog(AllElephants.Count().ToString()).ShowAsync();
+
+
             //executed statements in command blah blah
 
             //sort the elephant according to the string in 'InputTextBox' property
 
-            FilteredElephants.Clear();
+            FilteredElephants = new ObservableCollection<ElephantModel>();
+
+            if (InputTextBox.Equals(""))
+            {
+                FilteredElephants = AllElephants;
+            }
+            else
+            {
+                foreach (ElephantModel elephantModel in AllElephants)
+                {
+
+                    if (elephantModel.Name.Contains(InputTextBox) || elephantModel.EarSize.Contains(InputTextBox) ||
+                        elephantModel.Zoo.Contains(InputTextBox))
+                    {
+                        FilteredElephants.Add(elephantModel);
+                    }
+                }
+
+    
+            }
             OnPropertyChanged("FilteredElephants");
 
         }
