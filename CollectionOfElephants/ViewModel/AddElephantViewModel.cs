@@ -62,7 +62,7 @@ namespace CollectionOfElephants.ViewModel
             if (file == null)
             {
                 StorageFolder installationFolder = Windows.ApplicationModel.Package.Current.InstalledLocation;
-                string xmlfile = @"Assets\xml\Elephants.xml";
+                string xmlfile = @"Assets\xml\AllElephants.xml";
                 file = await installationFolder.GetFileAsync(xmlfile);
             }
 

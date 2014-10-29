@@ -22,6 +22,10 @@
         * Row 1 contains the rest of the page layout
     -->
     <Grid Background="#FF617D95">
+        <Grid.DataContext>
+            <ViewModel:FilterViewModel/>
+        </Grid.DataContext>
+
         <Grid.ChildrenTransitions>
             <TransitionCollection>
                 <EntranceThemeTransition/>
@@ -32,12 +36,11 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Grid.DataContext>
-            <ViewModel:FilterViewModel/>
-        </Grid.DataContext>
-
         <!-- Back button and page title -->
         <Grid>
+            <Grid.DataContext>
+                <ViewModel:FilterViewModel/>
+            </Grid.DataContext>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="120"/>
                 <ColumnDefinition Width="*"/>
@@ -51,6 +54,10 @@
             <TextBlock x:Name="pageTitle" Text="Search for Elephant" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
 				IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="2,0,28,39"/>
         </Grid>
-        <ListView HorizontalAlignment="Left" Height="321" Margin="55,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="350" ItemsSource="{Binding Elephants, Mode=TwoWay}"/>
+        <ListView HorizontalAlignment="Left" Height="321" Margin="55,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="350" ItemsSource="{Binding FilteredElephants}">
+            
+        </ListView>
+        <TextBox HorizontalAlignment="Left" Margin="700,41,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="266" Text="{Binding InputTextBox, Mode=TwoWay}"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="699,89,0,0" Grid.Row="1" VerticalAlignment="Top" Command="{Binding filterCommand}"/>
     </Grid>
 </Page>

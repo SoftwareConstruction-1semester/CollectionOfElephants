@@ -32,8 +32,8 @@ namespace CollectionOfElephants.ViewModel
         {
             #region create ZooModels
             //_zooModels = new ObservableCollection<ZooModel>();
-            //ZooModel z1 = new ZooModel(){ImageUrl = "/Assets/cphElephant.jpg", City = "Copenhagen", Name = "Copenhagen Zoo", Elephants = new List<ElephantModel>()};
-            //ZooModel z2 = new ZooModel() {ImageUrl = "/Assets/odenseElphant.jpg",City = "Odense", Name = "Odense Zoo", Elephants = new List<ElephantModel>() };
+            //ZooModel z1 = new ZooModel(){ImageUrl = "/Assets/cphElephant.jpg", City = "Copenhagen", Name = "Copenhagen Zoo", AllElephants = new List<ElephantModel>()};
+            //ZooModel z2 = new ZooModel() {ImageUrl = "/Assets/odenseElphant.jpg",City = "Odense", Name = "Odense Zoo", AllElephants = new List<ElephantModel>() };
             //_zooModels.Add(z1);
             //_zooModels.Add(z2);
 
@@ -55,10 +55,10 @@ namespace CollectionOfElephants.ViewModel
             //// short way of doing the same as above
             //ElephantModel e3 = new ElephantModel(){EarSize = "small", Name = "Ebbe", NumberOfChildren = 2, Weight = 78, imageURL = ""};
 
-            //ZooModels[0].Elephants.Add(e1);
-            //ZooModels[0].Elephants.Add(e2);
+            //ZooModels[0].AllElephants.Add(e1);
+            //ZooModels[0].AllElephants.Add(e2);
 
-            //ZooModels[1].Elephants.Add(e3);
+            //ZooModels[1].AllElephants.Add(e3);
 
             //Load XML
             LoadElephantModels();
@@ -88,7 +88,7 @@ namespace CollectionOfElephants.ViewModel
             if (file == null)
             {
                 StorageFolder installationFolder = Windows.ApplicationModel.Package.Current.InstalledLocation;
-                string xmlfile = @"Assets\xml\Elephants.xml";
+                string xmlfile = @"Assets\xml\AllElephants.xml";
                 file = await installationFolder.GetFileAsync(xmlfile);
             }
 

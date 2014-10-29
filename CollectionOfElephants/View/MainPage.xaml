@@ -22,9 +22,9 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <TextBlock HorizontalAlignment="Left" Margin="103,47,0,0" TextWrapping="Wrap" Text="Danish Elephants" VerticalAlignment="Top" Style="{StaticResource HeaderTextBlockStyle}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="103,47,0,0" TextWrapping="Wrap" Text="Danish AllElephants" VerticalAlignment="Top" Style="{StaticResource HeaderTextBlockStyle}"/>
 
-        <TextBlock HorizontalAlignment="Left" Margin="112,338,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{StaticResource SubheaderTextBlockStyle}" Text="Elephants in"/>
+        <TextBlock HorizontalAlignment="Left" Margin="112,338,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{StaticResource SubheaderTextBlockStyle}" Text="AllElephants in"/>
 
         <ListView HorizontalAlignment="Left" Height="100" Margin="112,386,0,0" VerticalAlignment="Top" Width="207" ItemsSource="{Binding SelectedZoo.Elephants}" SelectedItem="{Binding SelectedElephantModel, Mode=TwoWay}">
             <ListView.ItemTemplate>

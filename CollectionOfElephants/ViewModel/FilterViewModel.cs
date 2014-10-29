@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using System.Xml.Linq;
 using Windows.Storage;
 using CollectionOfElephants.Annotations;
@@ -18,12 +19,37 @@ namespace CollectionOfElephants.ViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public ObservableCollection<ElephantModel> Elephants { get; set; }
+        public ObservableCollection<ElephantModel> AllElephants { get; set; }
+
+        public ObservableCollection<ElephantModel> FilteredElephants { get; set; }
+
+        public String InputTextBox { get; set; }
+
+        public ICommand filterCommand { get; set; }
 
         public FilterViewModel()
         {
-            Elephants = new ObservableCollection<ElephantModel>();
+            AllElephants = new ObservableCollection<ElephantModel>();
+            FilteredElephants = new ObservableCollection<ElephantModel>();
+
+            // put all elephants in filteredelephant to begin with
+            FilteredElephants = AllElephants;
+
             LoadElephantModels();
+
+            filterCommand = new Common.RelayCommand(FilterElephants);
+
+        }
+
+        private void FilterElephants()
+        {
+            //executed statements in command blah blah
+
+            //sort the elephant according to the string in 'InputTextBox' property
+
+            FilteredElephants.Clear();
+            OnPropertyChanged("FilteredElephants");
+
         }
 
         private async void LoadElephantModels()
@@ -42,7 +68,7 @@ namespace CollectionOfElephants.ViewModel
             if (file == null)
             {
                 StorageFolder installationFolder = Windows.ApplicationModel.Package.Current.InstalledLocation;
-                string xmlfile = @"Assets\xml\Elephants.xml";
+                string xmlfile = @"Assets\xml\AllElephants.xml";
                 file = await installationFolder.GetFileAsync(xmlfile);
             }
 
@@ -51,7 +77,6 @@ namespace CollectionOfElephants.ViewModel
             XDocument elephantDocument = XDocument.Load(elephantStream);
 
             IEnumerable<XElement> elephantList = elephantDocument.Descendants("elephantmodel");
-
 
             foreach (XElement xElement in elephantList)
             {
@@ -62,9 +87,9 @@ namespace CollectionOfElephants.ViewModel
                 e.imageURL = xElement.Element("imageurl").Value;
                 e.NumberOfChildren = Convert.ToInt32(xElement.Element("children").Value);
                 e.EarSize = xElement.Element("earsize").Value;
-                Elephants.Add(e);
+                AllElephants.Add(e);
             }
-            OnPropertyChanged("Elephants");
+            OnPropertyChanged("AllElephants");
         }
 
         [NotifyPropertyChangedInvocator]
