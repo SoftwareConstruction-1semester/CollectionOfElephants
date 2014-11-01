@@ -56,9 +56,12 @@
         <TextBlock HorizontalAlignment="Left" Margin="461,396,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Select Zoo" VerticalAlignment="Top" Style="{StaticResource SubtitleTextBlockStyle}"/>
         <TextBlock HorizontalAlignment="Left" Margin="461,329,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Number of Children" VerticalAlignment="Top" Style="{StaticResource SubtitleTextBlockStyle}"/>
         <TextBlock HorizontalAlignment="Left" Margin="461,255,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Ear Size" VerticalAlignment="Top" Style="{StaticResource SubtitleTextBlockStyle}"/>
-        <TextBlock HorizontalAlignment="Left" Margin="461,188,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Style="{StaticResource SubtitleTextBlockStyle}"/>
-        <TextBox HorizontalAlignment="Left" Margin="663,176,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding NewElephant.Name, Mode=TwoWay}" VerticalAlignment="Top" Width="176"/>
+        <TextBlock HorizontalAlignment="Left" Margin="461,188,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Image" VerticalAlignment="Top" Style="{StaticResource SubtitleTextBlockStyle}" />
         <TextBox HorizontalAlignment="Left" Margin="663,243,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding NewElephant.EarSize, Mode=TwoWay}" VerticalAlignment="Top" Width="176"/>
         <TextBox HorizontalAlignment="Left" Margin="663,317,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding NewElephant.NumberOfChildren, Mode=TwoWay}" VerticalAlignment="Top" Width="176"/>
+        <TextBox HorizontalAlignment="Left" Margin="663,109,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding NewElephant.Name, Mode=TwoWay}" VerticalAlignment="Top" Width="176"/>
+        <TextBlock HorizontalAlignment="Left" Margin="461,121,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Style="{StaticResource SubtitleTextBlockStyle}"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="660,173,0,0" Grid.Row="1" VerticalAlignment="Top" Command="{Binding FilePickerCommand}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="761,195,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding SelectedFile.Name}" VerticalAlignment="Top"/>
     </Grid>
 </Page>

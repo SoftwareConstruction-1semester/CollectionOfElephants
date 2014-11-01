@@ -57,7 +57,7 @@
         <ListView HorizontalAlignment="Left" Height="321" Margin="55,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="350" ItemsSource="{Binding FilteredElephants, Mode=TwoWay}">
             
         </ListView>
-        <TextBox HorizontalAlignment="Left" Margin="700,41,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="266" Text="{Binding InputTextBox, Mode=TwoWay}"/>
+        <TextBox HorizontalAlignment="Left" Margin="700,41,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="266" Text="{Binding InputTextBox, Mode=TwoWay}" />
         <Button Content="Button" HorizontalAlignment="Left" Margin="699,89,0,0" Grid.Row="1" VerticalAlignment="Top" Command="{Binding filterCommand}"/>
     </Grid>
 </Page>

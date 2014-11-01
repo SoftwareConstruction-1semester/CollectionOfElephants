@@ -47,15 +47,7 @@ namespace CollectionOfElephants.ViewModel
 
         private void FilterElephants()
         {
-            new MessageDialog(AllElephants.Count().ToString()).ShowAsync();
-
-
-            //executed statements in command blah blah
-
-            //sort the elephant according to the string in 'InputTextBox' property
-
             FilteredElephants = new ObservableCollection<ElephantModel>();
-
             if (InputTextBox.Equals(""))
             {
                 FilteredElephants = AllElephants;
@@ -65,17 +57,15 @@ namespace CollectionOfElephants.ViewModel
                 foreach (ElephantModel elephantModel in AllElephants)
                 {
 
-                    if (elephantModel.Name.Contains(InputTextBox) || elephantModel.EarSize.Contains(InputTextBox) ||
+                    if (elephantModel.Name.Contains(InputTextBox) || 
+                        elephantModel.EarSize.Contains(InputTextBox) ||
                         elephantModel.Zoo.Contains(InputTextBox))
                     {
                         FilteredElephants.Add(elephantModel);
                     }
-                }
-
-    
+                }    
             }
             OnPropertyChanged("FilteredElephants");
-
         }
 
         private async void LoadElephantModels()

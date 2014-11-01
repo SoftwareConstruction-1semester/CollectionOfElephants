@@ -1,4 +1,5 @@
-﻿using CollectionOfElephants.Common;
+﻿using Windows.Storage.Pickers;
+using CollectionOfElephants.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -78,6 +79,7 @@ namespace CollectionOfElephants.View
         /// serializable state.</param>
         private void navigationHelper_SaveState(object sender, SaveStateEventArgs e)
         {
+
         }
 
         #region NavigationHelper registration
@@ -102,5 +104,7 @@ namespace CollectionOfElephants.View
         }
 
         #endregion
+
+        
     }
 }

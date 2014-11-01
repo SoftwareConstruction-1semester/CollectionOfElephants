@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Xml.Linq;
 using Windows.Storage;
+using Windows.Storage.Pickers;
 using CollectionOfElephants.Annotations;
 using CollectionOfElephants.Model;
 
@@ -22,16 +23,51 @@ namespace CollectionOfElephants.ViewModel
         private ICommand _addNewElephant;
         private ObservableCollection<ZooModel> _zooModels;
         private ZooModel _selectedZooModel;
+        private StorageFile _selectedFile;
+        private ICommand _filePickerCommand;
+
+        public StorageFile SelectedFile
+        {
+            get { return _selectedFile; }
+            set { _selectedFile = value; }
+        }
+
+        public ICommand FilePickerCommand
+        {
+            get { return _filePickerCommand; }
+            set { _filePickerCommand = value; }
+        }
 
         public AddElephantViewModel()
         {
             _newElephant = new ElephantModel();
             _addNewElephant = new RelayCommand(AddElephantCommand);
-
-
+            
             ZooModels = new ObservableCollection<ZooModel>();
             LoadZooModels();
             //SelectedZooModel = ZooModels[0];
+
+            _filePickerCommand = new RelayCommand(FilePicker);
+        }
+
+        private async void FilePicker()
+        {
+            var filePicker = new FileOpenPicker();
+            filePicker.FileTypeFilter.Add(".jpg");
+            filePicker.FileTypeFilter.Add(".jpeg");
+            filePicker.FileTypeFilter.Add(".gif");
+            filePicker.ViewMode = PickerViewMode.Thumbnail;
+            filePicker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
+            filePicker.SettingsIdentifier = "PicturePicker";
+            filePicker.CommitButtonText = "Select Files";
+
+            var selectedFiles = await filePicker.PickMultipleFilesAsync();
+            if (selectedFiles != null)
+            {
+                SelectedFile = selectedFiles[0];
+                OnPropertyChanged("SelectedFile");
+                // do something with the selected files
+            }
         }
 
         public ObservableCollection<ZooModel> ZooModels
